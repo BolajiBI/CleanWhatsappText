@@ -1,4 +1,3 @@
-//File_CombinePathInfos
 let
 	fxCleanWhatsappText = (TextFilePath as text, MessageSeparator as text, PersonSeparator as text, DateFormat as text, HasSquareBrackets as logical) as table =>
 		let
