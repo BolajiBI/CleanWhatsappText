@@ -17,3 +17,5 @@ In that iPhone sample, Message Separator would be a space ( ); Contact Separator
 Simply copy the code and paste in a blank query in the Power Query Editor
 ## Conclusion
 This data cleaning step is a part of a WhatsApp Data Analysis project. Check that out [here](https://github.com/BolajiBI/WhatsAppPowerBIReport)
+
+There are still a few things it doesn't capture such as those automatic messages of Who was added to the group and when? Who was made an Admin? What time a person joined the group? Other than that, it works relatively well.
