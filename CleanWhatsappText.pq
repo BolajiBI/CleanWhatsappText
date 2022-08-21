@@ -50,11 +50,11 @@ let
                and not Text.Contains([Person], "added")
          ),
          IdentifyMedia = Table.ReplaceValue(RemoveErrorNames, "<Media omitted>", "Media", Replacer.ReplaceText, {"Message"}),
-         AddedMessageType = Table.AddColumn(IdentifyMedia, "MessageType", each if [Message] = "Media" then "Media" else "Text", type text),
-         SelectColumns = Table.SelectColumns(AddedMessageType, {"Date", "Time", "Person", "Message", "MessageType"}),
-         TrimmedText = Table.TransformColumns(SelectColumns, {{"Person", Text.Trim, type text}, {"Message", Text.Trim, type text}})
+         TrimmedText = Table.TransformColumns(IdentifyMedia,{{"Person", Text.Trim, type text}, {"Message", Text.Trim, type text}})
+         AddedMessageType = Table.AddColumn(TrimmedText, "MessageType", each if [Message] = "Media" then "Media" else "Text", type text),
+         SelectColumns = Table.SelectColumns(AddedMessageType, {"Date", "Time", "Person", "Message", "MessageType"})
       in
-         TrimmedText,
+         SelectColumns,
    ParameterTypeAndMetadata = type function (
       TextFilePath as (
          type text
